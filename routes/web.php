@@ -18,3 +18,4 @@ Route::get('/', function () {
 Route::get('/room', 'Home@room');
 
 Route::get('/createiptv','IptvController@create');
+Route::get('/createonity','OnityController@create');
