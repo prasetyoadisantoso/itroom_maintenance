@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/room', 'Home@room');
+
+Route::get('/createiptv','IptvController@create');
