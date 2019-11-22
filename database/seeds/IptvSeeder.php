@@ -13,7 +13,8 @@ class IptvSeeder extends Seeder
     {
         //
         DB::table('iptvs')->insert([
-            'rooms_id' => '2',
+            [
+            'rooms_id' => '1',
             'date' => '23/11/2019',
             'remote' => 'GOOD',
             'noteremote' => 'cek',
@@ -25,8 +26,8 @@ class IptvSeeder extends Seeder
             'remark' => 'all is good',
             'macaddress' => '00:00:70:a1:ab'
         ], [
-            'rooms_id' => '3',
-            'date' => '24/11/2019',
+            'rooms_id' => '2',
+            'date' => '23/11/2019',
             'remote' => 'GOOD',
             'noteremote' => 'cek',
             'stb' => 'GOOD',
@@ -36,7 +37,34 @@ class IptvSeeder extends Seeder
             'powersupply' => 'Adaptor',
             'remark' => 'all is good',
             'macaddress' => '00:00:70:a1:ab'
-        ]
-        );
+        ],
+
+            [
+                'rooms_id' => '3',
+                'date' => '23/11/2019',
+                'remote' => 'GOOD',
+                'noteremote' => 'cek',
+                'stb' => 'GOOD',
+                'notestb' => 'cek',
+                'ir' => 'GOOD',
+                'noteir' => 'cek',
+                'powersupply' => 'Adaptor',
+                'remark' => 'all is good',
+                'macaddress' => '00:00:70:a1:ab'
+            ],
+            [
+                'rooms_id' => '1',
+                'date' => '24/11/2019',
+                'remote' => 'GOOD',
+                'noteremote' => 'cek',
+                'stb' => 'GOOD',
+                'notestb' => 'cek',
+                'ir' => 'GOOD',
+                'noteir' => 'cek',
+                'powersupply' => 'Adaptor',
+                'remark' => 'all is good',
+                'macaddress' => '00:00:70:a1:ab'
+            ],
+        ]);
     }
 }

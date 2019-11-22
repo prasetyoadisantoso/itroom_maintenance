@@ -5,7 +5,7 @@
     <div class="container mt-5">
         <h3 class="text-center">Tambah data ONITY</h3>
     </div>
-    <div class="container mt-5 mb-5">
+    <div class="container card mt-5 mb-5">
         <form>
             <div class="form-group">
                 <label for="date">Date</label>
@@ -62,17 +62,17 @@
             {{--KEYTAG--}}
             <div class="form-group">
                 <label for="keytag">KEYTAG</label>
+                <div class="form-group">
+                    <label for="notekeytag">Note KEYTAG</label>
+                    <input type="text" class="form-control" id="notekeytag" placeholder="Masukan Note...">
+                </div>
+                <br>
+
                 <select name="keytag" class="form-control" id="keytag">
                     <option value="1">GOOD</option>
                     <option value="2">NO</option>
                 </select>
             </div>
-            <div class="form-group">
-                <label for="notekeytag">Note KEYTAG</label>
-                <input type="text" class="form-control" id="notekeytag" placeholder="Masukan Note...">
-            </div>
-            <br>
-
 
             {{--READER--}}
             <div class="form-group">
@@ -111,6 +111,7 @@
             <br>
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{url('/room')}}" class="btn btn-secondary">Back</a>
         </form>
     </div>
 

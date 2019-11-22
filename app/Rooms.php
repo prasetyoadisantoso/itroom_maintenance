@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rooms extends Model
 {
     //
+
     public function iptv(){
         return $this->hasMany('App\Iptvs');
     }

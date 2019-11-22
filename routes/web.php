@@ -15,7 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Route::get('/room', 'Home@room');
+Route::get('/room/{id}', 'Home@getRoom');
 
 Route::get('/createiptv','IptvController@create');
 Route::get('/createonity','OnityController@create');

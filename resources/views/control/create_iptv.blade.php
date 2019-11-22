@@ -5,7 +5,7 @@
     <div class="container mt-5">
         <h3 class="text-center">Tambah data IPTV</h3>
     </div>
-    <div class="container mt-5 mb-5">
+    <div class="container card mt-5 mb-5">
         <form>
             <div class="form-group">
                 <label for="date">Date</label>
@@ -100,6 +100,7 @@
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{url('/room')}}" class="btn btn-secondary">Back</a>
         </form>
     </div>
 

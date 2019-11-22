@@ -13,10 +13,31 @@ class RoomSeeder extends Seeder
     {
         //
         DB::table('rooms')->insert([
-            'noroom' => 'A102',
+            [
+            'noroom' => 'A101',
             'floor' => '1',
             'type' => 'SUI',
             'ipaddress' => '172.168.1.28'
+            ],
+
+            [
+                'noroom' => 'A102',
+                'floor' => '1',
+                'type' => 'SUI',
+                'ipaddress' => '172.168.1.28'
+            ],
+
+            [
+                'noroom' => 'A103',
+                'floor' => '1',
+                'type' => 'SUI',
+                'ipaddress' => '172.168.1.28'
+            ],
+
+
+
+
+
         ]);
     }
 }
