@@ -53,6 +53,11 @@ $ php artisan config:cache
 $ php artisan cache:clear
 ```
 
+6. Generate Key
+```sh
+$ php artisan key:generate
+```
+
 
 License
 ----
