@@ -1,0 +1,5 @@
+*.sqlite
+*.sqlite-journal
+seeds/RoomSeeder.php
+seeds/IptvSeeder.php
+seeds/OnitySeeder.php
