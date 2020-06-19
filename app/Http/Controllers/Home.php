@@ -26,13 +26,15 @@ class Home extends Controller
     }
 
 
-    public function getRoom($id){
+    public function getRoom($id)
+    {
 
         $rooms = Rooms::where('id', '=', $id)->get();
-                return view('read.read_iptv', compact('rooms'));
+        return view('read.read_iptv', compact('rooms'));
     }
 
-    public function getRoom2($id){
+    public function getRoom2($id)
+    {
 
         $rooms = Rooms::where('id', '=', $id)->get();
         return view('read.read_onity', compact('rooms'));
@@ -44,67 +46,76 @@ class Home extends Controller
         //$rooms = Rooms::paginate(40);
         //$this->room = $rooms;
         //return view('getalliptv', ['rooms' => $rooms]);
+
         if ($request->page == 1) {
             $room1 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getalliptv', ['rooms' => $room1]);
-        } elseif ($request->page == 2){
+        } elseif ($request->page == 2) {
             $room2 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getalliptv', ['rooms' => $room2]);
-        } elseif ($request->page == 3){
+        } elseif ($request->page == 3) {
             $room3 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getalliptv', ['rooms' => $room3]);
-        } elseif ($request->page == 4){
+        } elseif ($request->page == 4) {
             $room4 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getalliptv', ['rooms' => $room4]);
-        } elseif ($request->page == 5){
+        } elseif ($request->page == 5) {
             $room5 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getalliptv', ['rooms' => $room5]);
-        }
-        elseif ($request->page != 5) {
-//            $rooms = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-//            return view('getalliptv', ['rooms' => $rooms]);
+        } elseif ($request->page != 5) {
             $rooms = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-            return view('getalliptv', ['rooms' => $rooms]);
+            
+            // Start Highcart Persentage
+            $total = Iptvs::with('id')->count();
+            $totstb = Iptvs::where('stb', 'LIKE', "GOOD")->count();
+            $totrem = Iptvs::where('remote', 'LIKE', "GOOD")->count();
+            $totir = Iptvs::where('ir', 'LIKE', "GOOD")->count();
+            $percentstb = $totstb / $total * 100;
+            $percentrem = $totrem / $total * 100;
+            $percentir = $totir / $total * 100;
+            // End Highcart Persentage
+            
+            return view('getalliptv', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir'));
         }
     }
 
     public function getAllOnity(Request $request)
     {
         #code
-//        $rooms = Rooms::paginate(40);
+        //        $rooms = Rooms::paginate(40);
 
-//        $room1 = Rooms::where('floor', 'LIKE', 1)->paginate(30);
-//        dd($room1);
-//        $room1 = Rooms::paginate(30);
-//        dd($request->page);
-            if ($request->page == 1) {
-                $room1 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                return view('getallonity', ['rooms' => $room1]);
-            } elseif ($request->page == 2){
-                $room2 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                return view('getallonity', ['rooms' => $room2]);
-            } elseif ($request->page == 3){
-                $room3 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                return view('getallonity', ['rooms' => $room3]);
-            } elseif ($request->page == 4){
-                $room4 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                return view('getallonity', ['rooms' => $room4]);
-            } elseif ($request->page == 5){
-                $room5 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                return view('getallonity', ['rooms' => $room5]);
-            } elseif ($request->page != 5){
-                $rooms = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
-                            return view('getallonity', ['rooms' => $rooms]);
-            }
-
-
-//        if ( $currents = 1){
-//            $rooms = Rooms::where('floor', 'LIKE', 2)->paginate(4);
-//            return view('getallonity', ['rooms' => $rooms]);
-//        }
+        //        $room1 = Rooms::where('floor', 'LIKE', 1)->paginate(30);
+        //        dd($room1);
+        //        $room1 = Rooms::paginate(30);
+        //        dd($request->page);
+        if ($request->page == 1) {
+            $room1 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $room1]);
+        } elseif ($request->page == 2) {
+            $room2 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $room2]);
+        } elseif ($request->page == 3) {
+            $room3 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $room3]);
+        } elseif ($request->page == 4) {
+            $room4 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $room4]);
+        } elseif ($request->page == 5) {
+            $room5 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $room5]);
+        } elseif ($request->page != 5) {
+            $rooms = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
+            return view('getallonity', ['rooms' => $rooms]);
+        }
 
 
-//        dd($rooms);
+        //        if ( $currents = 1){
+        //            $rooms = Rooms::where('floor', 'LIKE', 2)->paginate(4);
+        //            return view('getallonity', ['rooms' => $rooms]);
+        //        }
+
+
+        //        dd($rooms);
 
     }
 
@@ -117,7 +128,6 @@ class Home extends Controller
                 ->orWhere('id', 'LIKE', "%{$request->q}%");
         })->paginate(10);
         return view('getalliptv', ['rooms' => $rooms]);
-
     }
 
     public function searchonity(Request $request)
@@ -128,7 +138,6 @@ class Home extends Controller
                 ->orWhere('id', 'LIKE', "%{$request->q}%");
         })->paginate(10);
         return view('getallonity', ['rooms' => $rooms]);
-
     }
 
 
@@ -140,7 +149,6 @@ class Home extends Controller
                 ->orWhere('id', 'LIKE', "%{$request->q}%");
         })->paginate(153);
         return view('rooms', ['rooms' => $rooms]);
-
     }
 
 

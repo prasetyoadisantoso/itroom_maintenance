@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="bootstrap-4.2.1-stable\css\bootstrap.min.css">
     <link rel="stylesheet" href="..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
     <link rel="stylesheet" href="..\..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="../datatables/datatables.min.css">
+    {{-- <link rel="stylesheet" href="../datatables/datatables.min.css"> --}}
 
     <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\popper.min.js"></script>
-    <script type="text/javascript" src="../datatables/datatables.min.js"></script>
+    {{-- <script type="text/javascript" src="../datatables/datatables.min.js"></script> --}}
 
 
 
@@ -42,8 +42,7 @@
                         <div class="row">
 
                             <div class="col-lg-4 mb-5">
-                                <img src="https://www.watermark-bali.com/wp-content/uploads/2016/07/watermark-hotel-bali-logo.png"
-                                    alt="Watermark & SPA Hotel Bali" class="mx-auto d-block" width="150px">
+                                <img src="https://www.watermark-bali.com/wp-content/uploads/2016/07/watermark-hotel-bali-logo.png" alt="Watermark & SPA Hotel Bali" class="mx-auto d-block" width="150px">
                             </div>
 
                             <div class="col-lg-4 my-auto">
@@ -59,16 +58,20 @@
 
                         </div>
 
+                        <div class="container my-5">
+                            <div id="highchart"></div>
+                        </div>
+
+
+
                         <div class="container mt-3 mb-3 ">
-                            <form class="form-inline justify-content-center" method="get"
-                                action="{{url('/room/getallonity/search')}}">
-                                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Room search..."
-                                    aria-label="Search">
+                            <form class="form-inline justify-content-center" method="get" action="{{url('/room/getallonity/search')}}">
+                                <input class="form-control mr-sm-2" type="text" name="q" placeholder="Room search..." aria-label="Search">
                                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                             </form>
                         </div>
 
-                        {{--                Pagination with Floor--}}
+                        {{-- Pagination with Floor--}}
                         <nav aria-label="Page navigation example">
                             <ul class="pagination">
                                 <li class="page-item">
@@ -76,16 +79,11 @@
                                         <span aria-hidden="true">All Floor : </span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link"
-                                        href="{{url('/room/getalliptv?page=1')}}">1</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="{{url('/room/getalliptv?page=2')}}">2</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="{{url('/room/getalliptv?page=3')}}">3</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="{{url('/room/getalliptv?page=4')}}">4</a></li>
-                                <li class="page-item"><a class="page-link"
-                                        href="{{url('/room/getalliptv?page=5')}}">5</a></li>
+                                <li class="page-item"><a class="page-link" href="{{url('/room/getalliptv?page=1')}}">1</a></li>
+                                <li class="page-item"><a class="page-link" href="{{url('/room/getalliptv?page=2')}}">2</a></li>
+                                <li class="page-item"><a class="page-link" href="{{url('/room/getalliptv?page=3')}}">3</a></li>
+                                <li class="page-item"><a class="page-link" href="{{url('/room/getalliptv?page=4')}}">4</a></li>
+                                <li class="page-item"><a class="page-link" href="{{url('/room/getalliptv?page=5')}}">5</a></li>
                             </ul>
                         </nav>
 
@@ -132,8 +130,7 @@
                                         <form action="{{url('/createiptv/delete/' . $t->id)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <a href="{{url('/createiptv/edit/' . $t->id)}}"
-                                                class="btn btn-success mb-1">Edit</a>
+                                            <a href="{{url('/createiptv/edit/' . $t->id)}}" class="btn btn-success mb-1">Edit</a>
                                             <button type="submit" class="btn btn-danger" value="delete">Delete</button>
                                         </form>
                                     </td>
@@ -142,7 +139,8 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{--                {{ $rooms->links() }}--}}
+                        {{-- {{ $rooms->links() }}--}}
+                        <div style="display: none;">{!! $percentstb, $percentrem, $percentir !!}</div>
                     </div>
                 </div>
                 <br>
@@ -150,6 +148,83 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            var percentrem = {
+                {
+                    json_encode($percentrem, JSON_NUMERIC_CHECK)
+                }
+            };
+            var percentstb = {
+                {
+                    json_encode($percentstb, JSON_NUMERIC_CHECK)
+                }
+            };
+            var percentir = {
+                {
+                    json_encode($percentir, JSON_NUMERIC_CHECK)
+                }
+            };
+
+            $('#highchart').highcharts({
+                chart: {
+                    type: 'column'
+                }
+                , title: {
+                    text: 'Tool\'s Condition '
+                }
+                , subtitle: {
+                    text: 'Source: Prasetyo with Laravel'
+                }
+                , xAxis: {
+                    categories: [
+                        dataREM = 'Remote'
+                        , dataSTB = 'STB'
+                        , dataSTB = 'IR'
+                    , ]
+                    , crosshair: true
+                }
+                , yAxis: {
+                    min: 0
+                    , max: 100
+                    , title: {
+                        text: 'Condition in Percentage'
+                    }
+                }
+                , tooltip: {
+                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>'
+                    , pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                        '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>'
+                    , footerFormat: '</table>'
+                    , shared: true
+                    , useHTML: true
+                }
+                , plotOptions: {
+                    column: {
+                        pointPadding: 0.2
+                        , borderWidth: 0
+                    }
+                }
+                , series: [{
+                    name: 'GOOD'
+                    , data: [percentrem, percentstb, percentir]
+                }]
+
+            });
+
+
+
+
+
+        });
+
+    </script>
+
+
 
 
 
