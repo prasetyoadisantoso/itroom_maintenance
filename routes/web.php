@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Routing Main Home
 
 Route::get('/room', 'Home@room')->name('room');
+Route::get('/room/highchart-room', 'highchart@rchart');
 Route::get('/room/highchart-iptv', 'highchart@ichart');
 Route::get('/room/highchart-onity', 'highchart@ochart');
 Route::get('/room/getalliptv', 'Home@getAllIptv');

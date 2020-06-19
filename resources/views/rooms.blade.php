@@ -72,6 +72,8 @@
                     <a href="{{url('/createonity')}}" class="btn btn-outline-primary m-2 align-content-center">Add Data ONITY</a>
                     <a href="{{url('/room/getallonity')}}" class="btn btn-outline-primary m-2 align-content-center">Check All Data ONITY</a>
                 </div>
+                
+                @include('highchart-room')
 
                 <div class="container mt-3 mb-3 ">
                     <form class="form-inline justify-content-center" method="get" action="{{url('/room/getallrooms/search')}}">
