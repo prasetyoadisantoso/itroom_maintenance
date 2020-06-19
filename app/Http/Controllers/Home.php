@@ -75,7 +75,7 @@ class Home extends Controller
             $percentir = $totir / $total * 100;
             // End Highcart Persentage
             
-            return view('getalliptv', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir'));
+            return view('getalliptv',  ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir'));
         }
     }
 

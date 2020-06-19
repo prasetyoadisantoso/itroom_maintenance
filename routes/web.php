@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Routing Main Home
 
 Route::get('/room', 'Home@room')->name('room');
+Route::get('/room/highchart', 'highchart@ichart');
 Route::get('/room/getalliptv', 'Home@getAllIptv');
 Route::get('/room/getallonity', 'Home@getAllOnity');
 Route::get('/room/{id}', 'Home@getRoom');
@@ -47,6 +48,8 @@ Route::get('/createonity/edit/{id}','OnityController@edit');
 Route::patch('/createonity/edit/{id}','OnityController@update');
 Route::post('/createonity/store','OnityController@store');
 Route::delete('/createonity/delete/{id}', 'OnityController@destroy' );
+
+
 
 });
 

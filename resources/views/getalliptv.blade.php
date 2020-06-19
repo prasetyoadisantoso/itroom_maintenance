@@ -7,21 +7,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="..\..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    {{-- <link rel="stylesheet" href="../datatables/datatables.min.css"> --}}
-
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\popper.min.js"></script>
-    {{-- <script type="text/javascript" src="../datatables/datatables.min.js"></script> --}}
-
-
-
+    <link rel="stylesheet" href="{{asset('/bootstrap-4.2.1-stable\css\bootstrap.min.css')}}">
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/popper.min.js')}}"></script>
     <title>All Data</title>
-
-
 </head>
 
 <body>
@@ -58,11 +48,19 @@
 
                         </div>
 
-                        <div class="container my-5">
+                        {{-- <div class="container my-5">
                             <div id="highchart"></div>
-                        </div>
+                        </div> --}}
 
+                        
 
+                        
+                        
+                        @include('highchart')
+                        
+                        
+
+                        
 
                         <div class="container mt-3 mb-3 ">
                             <form class="form-inline justify-content-center" method="get" action="{{url('/room/getallonity/search')}}">
@@ -148,85 +146,6 @@
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script type="text/javascript">
-        $(function() {
-
-            var percentrem = {
-                {
-                    json_encode($percentrem, JSON_NUMERIC_CHECK)
-                }
-            };
-            var percentstb = {
-                {
-                    json_encode($percentstb, JSON_NUMERIC_CHECK)
-                }
-            };
-            var percentir = {
-                {
-                    json_encode($percentir, JSON_NUMERIC_CHECK)
-                }
-            };
-
-            $('#highchart').highcharts({
-                chart: {
-                    type: 'column'
-                }
-                , title: {
-                    text: 'Tool\'s Condition '
-                }
-                , subtitle: {
-                    text: 'Source: Prasetyo with Laravel'
-                }
-                , xAxis: {
-                    categories: [
-                        dataREM = 'Remote'
-                        , dataSTB = 'STB'
-                        , dataSTB = 'IR'
-                    , ]
-                    , crosshair: true
-                }
-                , yAxis: {
-                    min: 0
-                    , max: 100
-                    , title: {
-                        text: 'Condition in Percentage'
-                    }
-                }
-                , tooltip: {
-                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>'
-                    , pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-                        '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>'
-                    , footerFormat: '</table>'
-                    , shared: true
-                    , useHTML: true
-                }
-                , plotOptions: {
-                    column: {
-                        pointPadding: 0.2
-                        , borderWidth: 0
-                    }
-                }
-                , series: [{
-                    name: 'GOOD'
-                    , data: [percentrem, percentstb, percentir]
-                }]
-
-            });
-
-
-
-
-
-        });
-
-    </script>
-
-
-
-
 
 </body>
 
