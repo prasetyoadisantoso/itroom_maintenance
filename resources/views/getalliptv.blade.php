@@ -47,21 +47,9 @@
                             </div>
 
                         </div>
-
-                        {{-- <div class="container my-5">
-                            <div id="highchart"></div>
-                        </div> --}}
-
-                        
-
-                        
                         
                         @include('highchart')
                         
-                        
-
-                        
-
                         <div class="container mt-3 mb-3 ">
                             <form class="form-inline justify-content-center" method="get" action="{{url('/room/getallonity/search')}}">
                                 <input class="form-control mr-sm-2" type="text" name="q" placeholder="Room search..." aria-label="Search">
