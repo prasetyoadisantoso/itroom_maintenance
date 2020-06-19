@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('/bootstrap-4.2.1-stable\css\bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/jquery-3.3.1.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/bootstrap.bundle.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/popper.min.js')}}"></script>
@@ -86,7 +87,7 @@
                         </div>
                     </div>
 
-                    <table class="table table-bordered table-striped table-responsive text-center">
+                    <table class="table table-bordered table-striped table-responsive text-center table-wrapper-scroll-y my-custom-scrollbar">
                         <thead>
                             <tr class="bg-info text-light text-center ">
                                 <th>No Room</th>

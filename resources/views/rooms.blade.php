@@ -81,7 +81,7 @@
                     </form>
                 </div>
 
-                <table class="table table-bordered table-striped table-responsive-sm text-center" >
+                <table class="table table-bordered table-striped table-responsive-sm text-center table-wrapper-scroll-y my-custom-scrollbar" >
                     <thead>
                     <tr>
                         <th>No Room</th>
