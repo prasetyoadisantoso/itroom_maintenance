@@ -23,32 +23,31 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Authentication Links -->
                 @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                </li>
+                @if (Route::has('register'))
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                </li>
+                @endif
                 @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
                         </a>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
                 @endguest
             </ul>
         </div>
@@ -60,7 +59,7 @@
     <div class="card mt-5">
         <div class="card-group">
             <div class="container align-center">
-                    <img src="https://www.watermark-bali.com/wp-content/uploads/2016/07/watermark-hotel-bali-logo.png" alt="Watermark & SPA Hotel Bali" class="mx-auto my-5 d-block" width="200px">
+                <img src="https://www.watermark-bali.com/wp-content/uploads/2016/07/watermark-hotel-bali-logo.png" alt="Watermark & SPA Hotel Bali" class="mx-auto my-5 d-block" width="200px">
             </div>
             <div class="container">
                 <h2 class="text-center mb-3">Maintenance Rooms for IT Support Watermark </h2>
@@ -81,31 +80,36 @@
                     </form>
                 </div>
 
-                <table class="table table-bordered table-striped table-responsive-sm text-center table-wrapper-scroll-y my-custom-scrollbar" >
-                    <thead>
-                    <tr>
-                        <th>No Room</th>
-                        <th>Floor</th>
-                        <th>Type</th>
-                        <th>Ip Address</th>
-                        <th>Operation</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($rooms as $a)
-                        <tr>
-                            <td>{{$a->noroom}}</td>
-                            <td>{{$a->floor}}</td>
-                            <td>{{$a->type}}</td>
-                            <td>{{$a->ipaddress}}</td>
-                            <td>
-                                <a href="{{url('/room/'.$a->id)}}" class="btn btn-primary m-2">CHECK IPTV</a>
-                                <a href="{{url('/room2/'.$a->id)}}" class="btn btn-primary m-2">CHECK ONITY</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
+
+                <div class="room-scrool mb-5">
+
+                    <table class="table table-bordered table-striped table-responsive-sm text-center">
+                        <thead>
+                            <tr class="bg-info text-light text-center">
+                                <th>No Room</th>
+                                <th>Floor</th>
+                                <th>Type</th>
+                                <th>Ip Address</th>
+                                <th>Operation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($rooms as $a)
+                            <tr>
+                                <td>{{$a->noroom}}</td>
+                                <td>{{$a->floor}}</td>
+                                <td>{{$a->type}}</td>
+                                <td>{{$a->ipaddress}}</td>
+                                <td>
+                                    <a href="{{url('/room/'.$a->id)}}" class="btn btn-primary m-2">CHECK IPTV</a>
+                                    <a href="{{url('/room2/'.$a->id)}}" class="btn btn-primary m-2">CHECK ONITY</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
             <br>
 
@@ -113,6 +117,3 @@
     </div>
 </div>
 @endsection
-
-
-
