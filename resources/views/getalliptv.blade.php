@@ -48,10 +48,10 @@
 
                         </div>
                         
-                        @include('highchart')
+                        @include('highchart-iptv')
                         
                         <div class="container mt-3 mb-3 ">
-                            <form class="form-inline justify-content-center" method="get" action="{{url('/room/getallonity/search')}}">
+                            <form class="form-inline justify-content-center" method="get" action="{{url('/room/getalliptv/search')}}">
                                 <input class="form-control mr-sm-2" type="text" name="q" placeholder="Room search..." aria-label="Search">
                                 <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
                             </form>
@@ -73,13 +73,6 @@
                             </ul>
                         </nav>
 
-                        <button type="button" class="btn btn-success btn-sm mb-2">
-                            @foreach ($rooms as $item)
-                            @foreach ($item->iptv->slice(2, 1) as $t)
-                            Total Rooms Maintenance : <span class="badge badge-light">{{$t->count()}}</span>
-                            @endforeach
-                            @endforeach
-                        </button>
                         <table class="table table-bordered table-striped table-responsive text-center data-table">
                             <thead>
                                 <tr class="bg-info text-light text-center">

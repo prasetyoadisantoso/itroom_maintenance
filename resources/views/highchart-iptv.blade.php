@@ -42,7 +42,7 @@
 
     $(document).ready(function(){
     setInterval(function(){
-        $("#here").load('/room/highchart');
+        $("#here").load('/room/highchart-iptv');
         }, 15000);
 
     setInterval(function() {

@@ -5,17 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="..\..\bootstrap-4.2.1-stable\css\bootstrap.min.css">
-    <link rel="stylesheet" href="../datatables/datatables.min.css">
-
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\jquery-3.3.1.min.js"></script>
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="..\bootstrap-4.2.1-stable\js\popper.min.js"></script>
-    <script type="text/javascript" src="../datatables/datatables.min.js"></script>
-
-
+    <link rel="stylesheet" href="{{asset('/bootstrap-4.2.1-stable\css\bootstrap.min.css')}}">
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/jquery-3.3.1.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('/bootstrap-4.2.1-stable/js/popper.min.js')}}"></script>
     <title>All Data</title>
 
 
@@ -55,6 +48,8 @@
 
                     </div>
 
+                    @include('highchart-onity')
+
                     <div class="container mt-3 mb-3 ">
                         <form class="form-inline justify-content-center" method="get"
                             action="{{url('/room/getallonity/search')}}">
@@ -90,14 +85,6 @@
                             </nav>
                         </div>
                     </div>
-
-                    <button type="button" class="btn btn-success btn-sm mb-2">
-                        @foreach ($rooms as $item)
-                        @foreach ($item->onity->slice(2, 1) as $t)
-                        Total Rooms Maintenance : <span class="badge badge-light">{{$t->count()}}</span>
-                        @endforeach
-                        @endforeach
-                    </button>
 
                     <table class="table table-bordered table-striped table-responsive text-center">
                         <thead>
