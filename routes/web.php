@@ -22,6 +22,9 @@ Route::group(['middleware' => ['auth']], function () {
         return redirect('/room');
     });
 
+    Route::get('/exportiptv', 'Home@laporanexcel');
+    Route::get('/exportonity', 'Home@laporanexcel2');    
+
     //Routing Main Home
 
 Route::get('/room', 'Home@room')->name('room');
@@ -55,8 +58,7 @@ Route::delete('/createonity/delete/{id}', 'OnityController@destroy' );
 
 });
 
-Route::get('/exportiptv', 'Home@laporanexcel');
-Route::get('/exportonity', 'Home@laporanexcel2');
+
 
 
 //Buka tutup Register
