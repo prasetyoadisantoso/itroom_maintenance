@@ -58,12 +58,14 @@ Route::delete('/createonity/delete/{id}', 'OnityController@destroy' );
 
 });
 
+Route::get('/room/api', 'Home@apis');
+
 
 
 
 //Buka tutup Register
-// Route::get('/register', function () {
-//     return redirect('/');
-// });
+Route::get('/register', function () {
+    return redirect('/');
+});
 
 

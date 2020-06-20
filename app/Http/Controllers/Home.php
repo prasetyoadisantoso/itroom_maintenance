@@ -49,7 +49,7 @@ class Home extends Controller
         $percentsfb = $totsfb / $total * 100;
         // End Highcart Persentage
 
-        return view('rooms', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir', 'percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb' ));
+        return view('rooms', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir', 'percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb'));
     }
 
 
@@ -108,21 +108,21 @@ class Home extends Controller
 
     public function getAllOnity(Request $request)
     {
-         // Start Highcart Persentage
-         $total = Onities::with('id')->count();
-         $totcab = Onities::where('cable', 'LIKE', "GOOD")->count();
-         $totdnd = Onities::where('dnd', 'LIKE', "GOOD")->count();
-         $totbel = Onities::where('bel', 'LIKE', "GOOD")->count();
-         $totkey = Onities::where('keytag', 'LIKE', "GOOD")->count();
-         $totread = Onities::where('reader', 'LIKE', "GOOD")->count();
-         $totsfb = Onities::where('safetybox', 'LIKE', "GOOD")->count();
-         $percentcab = $totcab / $total * 100;
-         $percentdnd = $totdnd / $total * 100;
-         $percentbel = $totbel / $total * 100;
-         $percentkey = $totkey / $total * 100;
-         $percentread = $totread / $total * 100;
-         $percentsfb = $totsfb / $total * 100;
-         // End Highcart Persentage
+        // Start Highcart Persentage
+        $total = Onities::with('id')->count();
+        $totcab = Onities::where('cable', 'LIKE', "GOOD")->count();
+        $totdnd = Onities::where('dnd', 'LIKE', "GOOD")->count();
+        $totbel = Onities::where('bel', 'LIKE', "GOOD")->count();
+        $totkey = Onities::where('keytag', 'LIKE', "GOOD")->count();
+        $totread = Onities::where('reader', 'LIKE', "GOOD")->count();
+        $totsfb = Onities::where('safetybox', 'LIKE', "GOOD")->count();
+        $percentcab = $totcab / $total * 100;
+        $percentdnd = $totdnd / $total * 100;
+        $percentbel = $totbel / $total * 100;
+        $percentkey = $totkey / $total * 100;
+        $percentread = $totread / $total * 100;
+        $percentsfb = $totsfb / $total * 100;
+        // End Highcart Persentage
         if ($request->page == 1) {
             $room1 = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getallonity', ['rooms' => $room1],  compact('percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb'));
@@ -142,7 +142,6 @@ class Home extends Controller
             $rooms = Rooms::where('floor', 'LIKE', "%$request->page%")->get();
             return view('getallonity', ['rooms' => $rooms],  compact('percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb'));
         }
-
     }
 
 
@@ -229,7 +228,7 @@ class Home extends Controller
         $percentsfb = $totsfb / $total * 100;
         // End Highcart Persentage
 
-        return view('rooms', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir', 'percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb' ));
+        return view('rooms', ['rooms' => $rooms], compact('percentstb', 'percentrem', 'percentir', 'percentcab', 'percentdnd', 'percentbel', 'percentkey', 'percentread', 'percentsfb'));
     }
 
 
@@ -244,4 +243,12 @@ class Home extends Controller
         return Excel::download(new OnityExport, 'Data Maintenance Onity.xlsx');
     }
 
+
+    public function apis()
+    {
+        # code...
+        //
+        $data = Rooms::orderBy('title', 'asc')->paginate(5);
+        return ArticleResource::collection($data);
+    }
 }
