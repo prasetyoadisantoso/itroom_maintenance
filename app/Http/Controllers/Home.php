@@ -248,7 +248,15 @@ class Home extends Controller
     {
         # code...
         //
-        $data = Rooms::orderBy('title', 'asc')->paginate(5);
-        return ArticleResource::collection($data);
+        $data = Rooms::all();
+
+        if (count($data) > 0) { //mengecek apakah data kosong atau tidak
+            $res['message'] = "Success!";
+            $res['values'] = $data;
+            return response($res);
+        } else {
+            $res['message'] = "Empty!";
+            return response($res);
+        }
     }
 }

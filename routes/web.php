@@ -14,6 +14,8 @@
 
 //use App\Http\Controllers\IptvController;
 
+Route::get('/room/api', 'Home@apis');
+
 Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
@@ -23,7 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     Route::get('/exportiptv', 'Home@laporanexcel');
-    Route::get('/exportonity', 'Home@laporanexcel2');    
+    Route::get('/exportonity', 'Home@laporanexcel2');
 
     //Routing Main Home
 
@@ -58,7 +60,7 @@ Route::delete('/createonity/delete/{id}', 'OnityController@destroy' );
 
 });
 
-Route::get('/room/api', 'Home@apis');
+// Route::get('/room/api', 'Home@apis');
 
 
 
