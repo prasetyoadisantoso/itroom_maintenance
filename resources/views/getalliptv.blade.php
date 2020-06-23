@@ -74,7 +74,7 @@
                             </ul>
                         </nav>
 
-                        <table class="table table-bordered table-striped table-responsive text-center data-table table-wrapper-scroll-y my-custom-scrollbar">
+                        <table class="table table-hover table-bordered table-striped table-responsive text-center data-table table-wrapper-scroll-y my-custom-scrollbar">
                             <thead>
                                 <tr class="bg-info text-light text-center">
                                     <th>No Room</th>
