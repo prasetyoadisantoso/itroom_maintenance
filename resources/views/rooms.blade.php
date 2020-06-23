@@ -85,7 +85,7 @@
 
                 <div class="room-scrool mb-5">
 
-                    <table class="table table-bordered table-striped table-responsive-sm text-center">
+                    <table class="table table-hover table-bordered table-striped table-responsive-sm text-center">
                         <thead>
                             <tr class="bg-info text-light text-center">
                                 <th>No Room</th>
